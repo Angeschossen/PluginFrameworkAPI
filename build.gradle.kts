@@ -45,6 +45,12 @@ version = "1.0.0"
 description = "PluginFrameworkAPI"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+tasks {
+    jar {
+        archiveFileName.set("PluginFrameworkAPI.jar")
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
