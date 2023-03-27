@@ -8,7 +8,9 @@ import org.jetbrains.annotations.Nullable;
 
 public interface HopperProvider {
 
-    @NotNull Plugin getPlugin();
+    @NotNull String getName();
+
+    boolean isEnabled();
 
     @Nullable
     HopperWrapper getHopper(@NotNull World world, int x, int y, int z);
