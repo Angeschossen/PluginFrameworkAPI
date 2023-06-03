@@ -1,4 +1,4 @@
-package com.github.angeschossen.pluginframework.api.blockutil;
+package com.github.angeschossen.pluginframework.api.blockutil.impl;
 
 import com.google.gson.JsonObject;
 import org.bukkit.Bukkit;
@@ -7,29 +7,29 @@ import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class IBlockPosition {
+public class BlockPosition implements com.github.angeschossen.pluginframework.api.blockutil.BlockPosition {
     public final World world;
-    public int x, y, z;
+    public final int x, y, z;
 
-    public IBlockPosition(World world, int x, int y, int z) {
+    public BlockPosition(World world, int x, int y, int z) {
         this.world = world;
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public IBlockPosition(Location location) {
+    public BlockPosition(Location location) {
         this(location.getWorld(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
     }
 
     @Nullable
-    public static IBlockPosition fromJson(JsonObject jsonObject) {
+    public static BlockPosition fromJson(JsonObject jsonObject) {
         World world = Bukkit.getWorld(jsonObject.get("world").getAsString());
         if (world == null) {
             return null;
         }
 
-        return new IBlockPosition(world, jsonObject.get("x").getAsInt(), jsonObject.get("y").getAsInt(), jsonObject.get("z").getAsInt());
+        return new BlockPosition(world, jsonObject.get("x").getAsInt(), jsonObject.get("y").getAsInt(), jsonObject.get("z").getAsInt());
     }
 
     public final boolean equals(World world, int x, int y, int z) {
@@ -38,11 +38,11 @@ public class IBlockPosition {
 
     @Override
     public final boolean equals(Object object) {
-        if (!(object instanceof IBlockPosition)) {
+        if (!(object instanceof BlockPosition)) {
             return false;
         }
 
-        IBlockPosition coordinate = (IBlockPosition) object;
+        BlockPosition coordinate = (BlockPosition) object;
         return coordinate.world.equals(this.world) && coordinate.x == x && coordinate.z == z && coordinate.y == y;
     }
 
@@ -50,32 +50,39 @@ public class IBlockPosition {
         return this.x == x && this.z == z && this.y == y;
     }
 
+    @Override
     public final int getChunkX() {
         return x >> 4;
     }
 
+    @Override
     public final int getChunkZ() {
         return z >> 4;
     }
 
     @NotNull
-    public final Location getLocation() {
+    @Override
+    public final Location toLocation() {
         return new Location(world, x, y, z);
     }
 
     @NotNull
+    @Override
     public final World getWorld() {
         return world;
     }
 
+    @Override
     public final int getX() {
         return x;
     }
 
+    @Override
     public final int getY() {
         return y;
     }
 
+    @Override
     public final int getZ() {
         return z;
     }
@@ -89,14 +96,9 @@ public class IBlockPosition {
         return hash;
     }
 
+    @Override
     public final boolean isChunkLoaded() {
         return world.isChunkLoaded(x >> 4, z >> 4);
-    }
-
-    public final void set(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
     }
 
     @NotNull
@@ -110,12 +112,8 @@ public class IBlockPosition {
         return jsonObject;
     }
 
-    public final Location toLocation() {
-        return new Location(world, x, y, z);
-    }
-
     @Override
     public final String toString() {
-        return "Coordinate{world=" + world + ",x=" + this.x + ",y=" + this.y + ",z=" + this.z + '}';
+        return "BlockPosition{world=" + world + ",x=" + this.x + ",y=" + this.y + ",z=" + this.z + '}';
     }
 }

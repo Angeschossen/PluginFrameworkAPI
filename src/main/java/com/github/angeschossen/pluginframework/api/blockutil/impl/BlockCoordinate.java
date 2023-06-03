@@ -1,18 +1,18 @@
-package com.github.angeschossen.pluginframework.api.blockutil;
+package com.github.angeschossen.pluginframework.api.blockutil.impl;
 
 
 import org.bukkit.Location;
 
-public class IBlockCoordinate {
+public class BlockCoordinate {
     public int x, y, z;
 
-    public IBlockCoordinate(int x, int y, int z) {
+    public BlockCoordinate(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public IBlockCoordinate(Location location) {
+    public BlockCoordinate(Location location) {
         this(location.getBlockX(), location.getBlockY(), location.getBlockZ());
     }
 
@@ -22,11 +22,11 @@ public class IBlockCoordinate {
 
     @Override
     public final boolean equals(Object object) {
-        if (!(object instanceof IBlockCoordinate)) {
+        if (!(object instanceof BlockCoordinate)) {
             return false;
         }
 
-        IBlockCoordinate coordinate = (IBlockCoordinate) object;
+        BlockCoordinate coordinate = (BlockCoordinate) object;
         return equals(coordinate.x, coordinate.y, coordinate.z);
     }
 
