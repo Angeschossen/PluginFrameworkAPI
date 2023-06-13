@@ -43,7 +43,7 @@ java {
 group = "com.github.angeschossen"
 version = "1.0.1"
 description = "PluginFrameworkAPI"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 tasks {
     jar {
