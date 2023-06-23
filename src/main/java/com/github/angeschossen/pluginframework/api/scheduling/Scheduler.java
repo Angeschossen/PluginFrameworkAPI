@@ -12,6 +12,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public interface Scheduler {
+
     @NotNull Task runTaskAsynchronously(@NotNull Runnable runnable);
 
     @NotNull Task runTaskLaterAsynchronously(@NotNull Runnable runnable, long delay, @NotNull TimeUnit timeUnit);
