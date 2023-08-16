@@ -6,4 +6,7 @@ public interface SQLNameable {
 
     @NotNull
     String getTableName();
+
+    @NotNull
+    String getName();
 }
