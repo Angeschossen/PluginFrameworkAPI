@@ -41,7 +41,7 @@ java {
 }
 
 group = "com.github.angeschossen"
-version = "1.0.2"
+version = "1.0.3"
 description = "PluginFrameworkAPI"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
