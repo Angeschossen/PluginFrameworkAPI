@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,6 +17,11 @@ public class BlockPosition implements com.github.angeschossen.pluginframework.ap
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    @NotNull
+    public final Block getBlock() {
+        return world.getBlockAt(x, y, z);
     }
 
     public BlockPosition(Location location) {
