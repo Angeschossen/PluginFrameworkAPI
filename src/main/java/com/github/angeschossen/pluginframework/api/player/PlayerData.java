@@ -13,7 +13,9 @@ public interface PlayerData {
     @NotNull
     Messages getMessages();
 
-    GUIConfiguration getGUIConfig();
+    GUIConfiguration getGUILocale();
+
+    GUIConfiguration getBedrockGUILocale();
 
     @NotNull Locale getLocale();
 }
