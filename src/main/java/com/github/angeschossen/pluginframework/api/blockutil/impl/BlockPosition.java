@@ -43,7 +43,7 @@ public class BlockPosition implements com.github.angeschossen.pluginframework.ap
     }
 
     @Override
-    public final boolean equals(Object object) {
+    public boolean equals(Object object) {
         if (!(object instanceof BlockPosition)) {
             return false;
         }
@@ -68,7 +68,7 @@ public class BlockPosition implements com.github.angeschossen.pluginframework.ap
 
     @NotNull
     @Override
-    public final Location toLocation() {
+    public Location toLocation() {
         return new Location(world, x, y, z);
     }
 
@@ -94,7 +94,7 @@ public class BlockPosition implements com.github.angeschossen.pluginframework.ap
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 17;
         hash = hash * 31 + x;
         hash = hash * 31 + y;
@@ -119,7 +119,7 @@ public class BlockPosition implements com.github.angeschossen.pluginframework.ap
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "BlockPosition{world=" + world + ",x=" + this.x + ",y=" + this.y + ",z=" + this.z + '}';
     }
 }
