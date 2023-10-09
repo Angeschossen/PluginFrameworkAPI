@@ -24,7 +24,7 @@ public class Position extends BlockPosition {
     }
 
     @Nullable
-    public static BlockPosition fromJson(JsonObject jsonObject) {
+    public static Position fromJson(JsonObject jsonObject) {
         World world = Bukkit.getWorld(jsonObject.get("world").getAsString());
         if (world == null) {
             return null;
