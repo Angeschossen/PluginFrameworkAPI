@@ -7,6 +7,8 @@ public interface ChangeSaveable {
 
     CompletableFuture<Void> save();
 
+    boolean forceSaveOnShutdown();
+
     int compareToSave(ChangeSaveable saveable);
 
     boolean exists();
