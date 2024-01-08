@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public interface BlockPosition {
 
+    @NotNull
     static com.github.angeschossen.pluginframework.api.blockutil.impl.BlockPosition of(World world, int x, int y, int z) {
         return new com.github.angeschossen.pluginframework.api.blockutil.impl.BlockPosition(world, x, y, z);
     }
