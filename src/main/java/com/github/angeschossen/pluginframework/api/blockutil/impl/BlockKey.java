@@ -1,5 +1,7 @@
 package com.github.angeschossen.pluginframework.api.blockutil.impl;
 
+import org.bukkit.Location;
+
 import java.util.Objects;
 
 public class BlockKey implements com.github.angeschossen.pluginframework.api.blockutil.BlockKey {
@@ -9,6 +11,35 @@ public class BlockKey implements com.github.angeschossen.pluginframework.api.blo
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public BlockKey(Location location) {
+        this(location.getBlockX(), location.getBlockY(), location.getBlockZ());
+    }
+
+    @Override
+    public final int getChunkX() {
+        return x >> 4;
+    }
+
+    @Override
+    public final int getChunkZ() {
+        return z >> 4;
+    }
+
+    @Override
+    public int getZ() {
+        return z;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
     }
 
     @Override
