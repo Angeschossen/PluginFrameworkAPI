@@ -6,8 +6,9 @@ import java.util.Objects;
 
 public class Checks {
 
-    public static void requireNonNull(Object o, String key) {
+    public static <T> T requireNonNull(T o, String key) {
         Objects.requireNonNull(o, key + " can't be null");
+        return o;
     }
 
     public static void isSync() {
