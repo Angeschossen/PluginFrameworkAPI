@@ -22,6 +22,11 @@ public class BlockKey implements com.github.angeschossen.pluginframework.api.blo
     }
 
 
+    @NotNull
+    public final Location toLocation() {
+        return new Location(world, x, y, z);
+    }
+
     @Override
     public final int getChunkX() {
         return x >> 4;
