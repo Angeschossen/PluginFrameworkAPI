@@ -1,10 +1,11 @@
 package com.github.angeschossen.pluginframework.api.trusted.group;
 
+import com.github.angeschossen.pluginframework.api.trusted.RoleHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public interface Group {
+public interface Group extends RoleHolder {
     /**
      * Check if the group is the default group.
      * The default group contains all protections that aren't part of another group.
@@ -12,13 +13,6 @@ public interface Group {
      * @return true, if is default
      */
     boolean isDefault();
-
-    /**
-     * Untrust a player that is trusted directly to this protection.
-     *
-     * @param playerUUID The player to untrust
-     */
-    void untrustPlayer(@NotNull UUID playerUUID);
 
     /**
      * Get the name with color. If you want the plain name, use {@link #getName()} instead.
