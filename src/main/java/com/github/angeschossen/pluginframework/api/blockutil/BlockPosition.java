@@ -11,6 +11,11 @@ public interface BlockPosition {
         return new com.github.angeschossen.pluginframework.api.blockutil.impl.BlockPosition(world, x, y, z);
     }
 
+    @NotNull
+    static com.github.angeschossen.pluginframework.api.blockutil.impl.BlockPosition of(Location location) {
+        return new com.github.angeschossen.pluginframework.api.blockutil.impl.BlockPosition(location.getWorld(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+    }
+
     int getChunkX();
 
     int getChunkZ();
