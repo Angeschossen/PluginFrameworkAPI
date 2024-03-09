@@ -1,5 +1,6 @@
 package com.github.angeschossen.pluginframework.api.trusted;
 
+import com.github.angeschossen.pluginframework.api.player.PlayerData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -15,6 +16,8 @@ public interface RoleHolder {
     void setOwner(UUID uid);
 
     String getOwnerName();
+
+    void openMenu(@NotNull PlayerData player);
 
     @NotNull SimpleRole getRole(@NotNull UUID uid);
 
