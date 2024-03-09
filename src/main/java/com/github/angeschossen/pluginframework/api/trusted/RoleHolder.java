@@ -2,6 +2,7 @@ package com.github.angeschossen.pluginframework.api.trusted;
 
 import com.github.angeschossen.pluginframework.api.player.PlayerData;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -15,6 +16,15 @@ public interface RoleHolder {
 
     void setOwner(UUID uid);
 
+    @Nullable
+    String getName();
+
+    @NotNull
+    String getDisplayName();
+
+    void setName(@Nullable String name);
+
+    @NotNull
     String getOwnerName();
 
     void openMenu(@NotNull PlayerData opener);
@@ -25,7 +35,7 @@ public interface RoleHolder {
 
     boolean isTrusted(@NotNull UUID uid);
 
-    void setRole(@NotNull UUID uid, @NotNull SimpleRole role)throws IllegalArgumentException;
+    void setRole(@NotNull UUID uid, @NotNull SimpleRole role) throws IllegalArgumentException;
 
     boolean trustPlayer(@NotNull UUID uid);
 
