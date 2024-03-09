@@ -17,7 +17,7 @@ public interface RoleHolder {
 
     String getOwnerName();
 
-    void openMenu(@NotNull PlayerData player);
+    void openMenu(@NotNull PlayerData opener);
 
     @NotNull SimpleRole getRole(@NotNull UUID uid);
 
