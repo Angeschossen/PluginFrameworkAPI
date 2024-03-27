@@ -10,11 +10,16 @@ import java.util.UUID;
 
 public abstract class PluginEvent extends Event {
 
-    public PluginEvent(){
+    public PluginEvent() {
         super(!Bukkit.isPrimaryThread());
     }
 
     public abstract void setAffectedPlayers(ImmutableMap.@NotNull Builder<String, Collection<UUID>> builder);
 
     public abstract void setExpressionVariables(ImmutableMap.@NotNull Builder<String, Object> builder);
+
+    @NotNull
+    public String getDebugInfo() {
+        return toString();
+    }
 }
