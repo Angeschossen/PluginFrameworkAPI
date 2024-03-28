@@ -20,7 +20,7 @@ public abstract class PluginEvent extends Event {
     public abstract void setExpressionVariables(ImmutableMap.@NotNull Builder<String, Object> builder);
 
     @Nullable
-    public String getDebugInfo() {
+    public String getLogInfo() {
         return null;
     }
 }
