@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -18,8 +19,8 @@ public abstract class PluginEvent extends Event {
 
     public abstract void setExpressionVariables(ImmutableMap.@NotNull Builder<String, Object> builder);
 
-    @NotNull
+    @Nullable
     public String getDebugInfo() {
-        return toString();
+        return null;
     }
 }
