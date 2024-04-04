@@ -38,7 +38,7 @@ public class OfflineBlockCoordinate {
     }
 
     public final boolean isTargetServer() {
-        return APIHandler.getInstance().getServerName().equals(serverName);
+        return APIHandler.getInstance().getMultiPaperHandler().isTargetServer(serverName);
     }
 
     public OfflineBlockCoordinate(@NotNull Location location) {
