@@ -15,7 +15,7 @@ public interface ChangeSaveable {
 
     void setUserInteractionChange();
 
-    void setSaveChange();
+    void setSaveChange(boolean publishRedisImmediately);
 
     boolean hasSaveChange();
 
