@@ -1,8 +1,10 @@
 package com.github.angeschossen.pluginframework.api.holder;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.CompletableFuture;
 
-public interface ChangeSaveable {
+public interface ChangeSaveable extends Changeable{
     long getLastChangeSave();
 
     CompletableFuture<Void> save();
@@ -13,9 +15,7 @@ public interface ChangeSaveable {
 
     boolean exists();
 
-    void setUserInteractionChange();
-
-    void setSaveChange(boolean publishRedisImmediately);
+    void setSaveChange();
 
     boolean hasSaveChange();
 
