@@ -1,6 +1,5 @@
 package com.github.angeschossen.pluginframework.api.blockutil;
 
-import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 
 public interface ChunkCoordinate {

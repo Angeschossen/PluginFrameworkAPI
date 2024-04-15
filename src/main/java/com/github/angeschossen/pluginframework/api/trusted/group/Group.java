@@ -3,8 +3,6 @@ package com.github.angeschossen.pluginframework.api.trusted.group;
 import com.github.angeschossen.pluginframework.api.trusted.RoleHolder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public interface Group extends RoleHolder {
     /**
      * Check if the group is the default group.
