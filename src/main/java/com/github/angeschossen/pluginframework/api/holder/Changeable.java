@@ -8,4 +8,7 @@ public interface Changeable {
 
     @NotNull
     CompletableFuture<Void> saveAndPublishToRedis();
+
+    @NotNull
+    CompletableFuture<Void> save();
 }
