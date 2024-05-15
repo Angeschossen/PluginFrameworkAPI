@@ -1,5 +1,6 @@
 package com.github.angeschossen.pluginframework.api.blockutil.impl;
 
+import com.github.angeschossen.pluginframework.api.blockutil.UnloadedPosition;
 import com.github.angeschossen.pluginframework.api.handler.APIHandler;
 import com.google.gson.JsonObject;
 import org.bukkit.Bukkit;
@@ -8,11 +9,12 @@ import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class OfflineBlockCoordinate {
+public class OfflineBlockCoordinate implements UnloadedPosition {
 
-    private String worldName, serverName;
-    private float yaw, pitch;
-    private double x, y, z;
+    private final String worldName;
+    private final String serverName;
+    private final float yaw, pitch;
+    private final double x, y, z;
 
     public OfflineBlockCoordinate(String serverName, String worldName, double x, double y, double z) {
         this(serverName, worldName, x, y, z, 0, 0);
@@ -32,10 +34,7 @@ public class OfflineBlockCoordinate {
         this.pitch = pitch;
     }
 
-    public OfflineBlockCoordinate() {
-
-    }
-
+    @Override
     public final boolean isTargetServer() {
         return APIHandler.getInstance().getMultiPaperHandler().isTargetServer(serverName);
     }
@@ -56,26 +55,32 @@ public class OfflineBlockCoordinate {
         return x == this.x && y == this.y && z == this.z;
     }
 
+    @Override
     public int getBlockX() {
         return (int) x;
     }
 
+    @Override
     public int getBlockY() {
         return (int) y;
     }
 
+    @Override
     public int getBlockZ() {
         return (int) z;
     }
 
+    @Override
     public int getChunkX() {
         return (int) x >> 4;
     }
 
+    @Override
     public int getChunkZ() {
         return (int) z >> 4;
     }
 
+    @Override
     @Nullable
     public final Location toLocation() {
         if (!isTargetServer()) {
@@ -88,39 +93,51 @@ public class OfflineBlockCoordinate {
 
     @Nullable
     public final World getWorld() {
-        return Bukkit.getWorld(getWorldName());
+        return isTargetServer() ? Bukkit.getWorld(getWorldName()) : null;
     }
 
+    @Override
     @NotNull
     public String getWorldName() {
         return worldName;
     }
 
+    @Override
     public double getX() {
         return x;
     }
 
+    @Override
     public double getY() {
         return y;
     }
 
+    @Override
     public double getZ() {
         return z;
     }
 
+    @Override
     public String getServerName() {
         return serverName;
     }
 
+    @Override
     public float getYaw() {
         return yaw;
     }
 
+    @Override
     public float getPitch() {
         return pitch;
     }
 
+    @Override
     public boolean isChunkLoaded() {
+        if (!isTargetServer()) {
+            return false;
+        }
+
         World world = getWorld();
         if (world == null) {
             return false;
@@ -129,7 +146,8 @@ public class OfflineBlockCoordinate {
         return world.isChunkLoaded(getChunkX(), getChunkZ());
     }
 
-    public boolean isLoaded() {
+    @Override
+    public boolean isWorldLoaded() {
         return getWorld() != null;
     }
 
