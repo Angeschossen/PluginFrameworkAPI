@@ -1,6 +1,7 @@
 package com.github.angeschossen.pluginframework.api.blockutil;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,6 +21,9 @@ public interface UnloadedPosition {
     @Nullable
     Location toLocation();
 
+    @Nullable
+    World getWorld();
+
     @NotNull
     String getWorldName();
 
@@ -38,4 +42,6 @@ public interface UnloadedPosition {
     boolean isChunkLoaded();
 
     boolean isWorldLoaded();
+
+    boolean isSameWorld(@NotNull String worldName);
 }

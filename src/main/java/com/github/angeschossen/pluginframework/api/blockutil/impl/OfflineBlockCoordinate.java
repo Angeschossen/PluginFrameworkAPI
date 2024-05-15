@@ -9,6 +9,8 @@ import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class OfflineBlockCoordinate implements UnloadedPosition {
 
     private final String worldName;
@@ -91,9 +93,15 @@ public class OfflineBlockCoordinate implements UnloadedPosition {
         return world == null ? null : new Location(world, x, y, z, yaw, pitch);
     }
 
+    @Override
     @Nullable
     public final World getWorld() {
         return isTargetServer() ? Bukkit.getWorld(getWorldName()) : null;
+    }
+
+    @NotNull
+    public final World getWorldNotNull() {
+        return Objects.requireNonNull(getWorld(), "expected world");
     }
 
     @Override
@@ -149,6 +157,11 @@ public class OfflineBlockCoordinate implements UnloadedPosition {
     @Override
     public boolean isWorldLoaded() {
         return getWorld() != null;
+    }
+
+    @Override
+    public boolean isSameWorld(@NotNull String worldName) {
+        return isTargetServer() && worldName.equalsIgnoreCase(this.worldName);
     }
 
     public JsonObject toJsonObject() {
