@@ -14,8 +14,11 @@ public interface PlayerData {
 
     @NotNull
     Messages getMessages();
-UUID getUUID();
-Player getPlayer();
+
+    UUID getUUID();
+
+    Player getPlayer();
+
     GUIConfiguration getGUILocale();
 
     GUIConfiguration getBedrockGUILocale();
