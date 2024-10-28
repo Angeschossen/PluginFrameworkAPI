@@ -2,15 +2,23 @@ package com.github.angeschossen.pluginframework.api.player;
 
 import com.github.angeschossen.pluginframework.api.configuration.gui.GUIConfiguration;
 import com.github.angeschossen.pluginframework.api.configuration.messages.Messages;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 import java.util.UUID;
 
-public interface OnlinePlayerData extends PlayerData {
-    @NotNull CommandSender getCommandSender();
+public interface PlayerDataBase {
 
-    Player getPlayer();
+    Object sendMessage(String msg, String[] p, String[] v);
+
+    @NotNull
+    Messages getMessages();
+
+    UUID getUUID();
+
+    GUIConfiguration getGUILocale();
+
+    GUIConfiguration getBedrockGUILocale();
+
+    @NotNull Locale getLocale();
 }
