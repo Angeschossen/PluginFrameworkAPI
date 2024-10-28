@@ -10,11 +10,10 @@ import java.util.UUID;
 
 public interface PlayerData {
 
+    Object sendMessage(String msg, String[] p, String[] v);
+
     @NotNull
     Messages getMessages();
-
-    Object sendMessage(String message, @Nullable String[] p, @Nullable String[] v, int in, int stay, int out,
-                       boolean checkLastMsg);
 
     UUID getUUID();
 
