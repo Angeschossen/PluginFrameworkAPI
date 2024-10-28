@@ -1,6 +1,6 @@
 package com.github.angeschossen.pluginframework.api.trusted;
 
-import com.github.angeschossen.pluginframework.api.player.PlayerData;
+import com.github.angeschossen.pluginframework.api.player.OnlinePlayerData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,7 +27,7 @@ public interface RoleHolder {
     @NotNull
     String getOwnerName();
 
-    void openMenu(@NotNull PlayerData opener);
+    void openMenu(@NotNull OnlinePlayerData opener);
 
     @NotNull SimpleRole getRole(@NotNull UUID uid);
 
